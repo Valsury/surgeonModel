@@ -7,7 +7,6 @@ $(document).ready(function() {
             data.forEach(surgeon => {
                 tableBody.append(`
                     <tr>
-                        <td>${surgeon.id}</td>
                         <td>${surgeon.firstName}</td>
                         <td>${surgeon.lastName}</td>
                         <td>${surgeon.middleName}</td>
