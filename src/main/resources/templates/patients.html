@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список пациентов</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Подключение CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/patients.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для модальных окон */
+        #addPatientModal, #editPatientModal {
+            display: none; /* Скрыто по умолчанию */
+            position: fixed; /* Фиксированное положение */
+            z-index: 1000; /* На переднем плане */
+            left: 0;
+            top: 0;
+            width: 100%; /* Полная ширина */
+            height: 100%; /* Полная высота */
+            overflow: auto; /* Прокрутка, если нужно */
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+        }
+
+        .modal-content {
+            background-color: #ffffff; /* Белый фон */
+            margin: 15% auto; /* Центрирование */
+            padding: 20px; /* Внутренние отступы */
+            border: 1px solid #ccc; /* Светло-серая граница */
+            border-radius: 8px; /* Закругленные углы */
+            width: 80%; /* Ширина модального окна */
+            max-width: 600px; /* Максимальная ширина */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Список пациентов</h1>
+    <button onclick="window.location.href='/surgeons'">Перейти к хирургам</button> <!-- Кнопка для перехода к хирургам -->
+    <button id="addPatient">Добавить пациента</button> <!-- Кнопка для добавления пациента -->
+    <table id="patientsTable">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Дата рождения</th>
+            <th>Контактные данные</th>
+            <th>Серия паспорта</th>
+            <th>Номер паспорта</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Данные пациентов будут динамически добавлены здесь -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Модальное окно для добавления пациента -->
+<div id="addPatientModal">
+    <div class="modal-content">
+        <h2>Добавить пациента</h2>
+        <label for="newFirstName">Имя:</label>
+        <input type="text" id="newFirstName" required>
+        <label for="newLastName">Фамилия:</label>
+        <input type="text" id="newLastName" required>
+        <label for="newMiddleName">Отчество:</label>
+        <input type="text" id="newMiddleName" required>
+        <label for="newDateOfBirth">Дата рождения:</label>
+        <input type="date" id="newDateOfBirth" required>
+        <label for="newContactDetails">Контактные данные:</label>
+        <input type="text" id="newContactDetails" required>
+        <label for="newPassportSeries">Серия паспорта:</label>
+        <input type="text" id="newPassportSeries" required>
+        <label for="newPassportNumber">Номер паспорта:</label>
+        <input type="text" id="newPassportNumber" required>
+        <button id="saveNewPatient">Сохранить изменения</button>
+        <button id="closeAddModal">Закрыть</button>
+    </div>
+</div>
+
+<!-- Модальное окно для редактирования пациента -->
+<div id="editPatientModal">
+    <div class="modal-content">
+        <h2>Редактировать пациента</h2>
+        <input type="hidden" id="editPatientId">
+        <label for="editFirstName">Имя:</label>
+        <input type="text" id="editFirstName" required>
+        <label for="editLastName">Фамилия:</label>
+        <input type="text" id="editLastName" required>
+        <label for="editMiddleName">Отчество:</label>
+        <input type="text" id="editMiddleName" required>
+        <label for="editDateOfBirth">Дата рождения:</label>
+        <input type="date" id="editDateOfBirth" required>
+        <label for="editContactDetails">Контактные данные:</label>
+        <input type="text" id="editContactDetails" required>
+        <label for="editPassportSeries">Серия паспорта:</label>
+        <input type="text" id="editPassportSeries" required>
+        <label for="editPassportNumber">Номер паспорта:</label>
+        <input type="text" id="editPassportNumber" required>
+        <button id="saveChanges">Сохранить изменения</button>
+        <button id="closeModal">Закрыть</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Открытие модального окна для добавления пациента
+        $('#addPatient').click(function() {
+            $('#addPatientModal').show();
+        });
+
+        // Закрытие модального окна для добавления пациента
+        $('#closeAddModal').click(function() {
+            $('#addPatientModal').hide();
+        });
+
+        // Закрытие модального окна для редактирования пациента
+        $('#closeModal').click(function() {
+            $('#editPatientModal').hide();
+        });
+
+        // Пример открытия модального окна редактирования
+        // $('#editButton').click(function() {
+        //     $('#editPatientModal').show();
+        // });
+    });
+</script>
+</body>
+</html>

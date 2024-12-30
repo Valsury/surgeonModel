@@ -33,7 +33,7 @@ table {
 /* Стили для заголовков таблицы */
 th, td {
     padding: 12px;
-    text-align: left;
+    text-align: center; /* Центрирование текста */
     border-bottom: 1px solid #ddd; /* Линия под ячейками */
 }
 
@@ -47,7 +47,7 @@ tr:hover {
     background-color: #f1f1f1; /* Светло-серый фон при наведении */
 }
 
-/* Стили для кнопок (если добавите в будущем) */
+/* Основные стили для кнопок */
 button {
     background-color: #007bff; /* Синий фон для кнопок */
     color: white; /* Белый текст для кнопок */
@@ -56,8 +56,78 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 20px; /* Отступ сверху для базовых кнопок */
 }
 
-button:hover {
+/* Стили для кнопок редактирования и удаления */
+.edit-btn, .delete-btn {
+    margin-top: 0; /* Убираем отступ сверху для этих кнопок */
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    background-color: #0056b3; /* Темнее при наведении */
+}
+
+/* Основные стили для модального окна */
+#editPatientModal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 1000; /* На переднем плане */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Прокрутка, если нужно */
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    background-color: #ffffff; /* Белый фон */
+    margin: 15% auto; /* Центрирование */
+    padding: 20px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Светло-серая граница */
+    border-radius: 8px; /* Закругленные углы */
+    width: 80%; /* Ширина модального окна */
+    max-width: 600px; /* Максимальная ширина */
+}
+
+/* Заголовок модального окна */
+.modal-content h2 {
+    text-align: center; /* Центрирование заголовка */
+    color: #333; /* Темный цвет текста */
+}
+
+/* Стили для полей ввода и их названий */
+label {
+    display: block; /* Блочный элемент для центрирования */
+    text-align: center; /* Центрирование текста */
+    margin: 20px 0 5px; /* Увеличенный отступ сверху и отступ снизу */
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 90%; /* Уменьшенная ширина полей ввода */
+    padding: 10px; /* Внутренние отступы */
+    margin: 0 auto 10px; /* Центрирование и отступы снизу */
+    border: 1px solid #ccc; /* Светло-серая граница */
+    border-radius: 4px; /* Зак ругленные углы */
+    display: block; /* Блочный элемент для центрирования */
+}
+
+/* Стили для кнопок в модальном окне */
+#saveChanges, #closeModal {
+    width: 100%; /* Полная ширина */
+    padding: 10px; /* Внутренние отступы */
+    margin-top: 10px; /* Отступ сверху */
+    background-color: #007bff; /* Синий фон */
+    color: white; /* Белый текст */
+    border: none;
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#saveChanges:hover, #closeModal:hover {
     background-color: #0056b3; /* Темнее при наведении */
 }
