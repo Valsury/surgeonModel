@@ -6,23 +6,25 @@ $(document).ready(function() {
             url: '/api/appointments',
             method: 'GET',
             success: function(data) {
+                console.log("Данные о приемах:", data); // Логируем данные
                 const tableBody = $('#appointmentsTable tbody');
-                tableBody.empty(); // Очистить таблицу перед добавлением данных
+                tableBody.empty();
                 data.forEach(appointment => {
                     tableBody.append(`
-                    <tr>
-                        <td>${appointment.id}</td>
-                        <td>${new Date(appointment.appointmentDateTime).toLocaleString('ru-RU')}</td>
-                        <td>${appointment.appointmentType}</td>
-                        <td>${appointment.operationType}</td>
-                        <td>${appointment.surgeonName}</td>
-                        <td>${appointment.patientName}</td>
-                        <td>
-                            <button class="edit-btn" data-id="${appointment.id}">✏️</button>
-                            <button class="delete-btn" data-id="${appointment.id}">🗑️</button>
-                        </td>
-                    </tr>
-                `);
+                <tr>
+                    <td>${appointment.id}</td>
+                    <td>${new Date(appointment.appointmentDateTime).toLocaleString('ru-RU')}</td>
+                    <td>${appointment.appointmentType}</td>
+                    <td>${appointment.operationType}</td>
+                    <td>${appointment.surgeonName}</td>
+                    <td>${appointment.patientName}</td>
+                    <td>
+                        <button class="edit-btn" data-id="${appointment.id}">✏️</button>
+                        <button class="delete-btn" data-id="${appointment.id}">🗑️</button>
+                        <button class="print-btn" data-id="${appointment.id}">🖨️</button>
+                    </td>
+                </tr>
+            `);
                 });
             },
             error: function() {
@@ -31,7 +33,6 @@ $(document).ready(function() {
         });
     }
 
-    // ```javascript
     // Обработчик для добавления нового приема
     $('#addAppointmentBtn').click(function() {
         $('#modalTitle').text('Добавить прием');
@@ -110,6 +111,14 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+
+    // Обработчик для печати приема (генерация PDF)
+    $(document).on('click', '.print-btn', function() {
+        const appointmentId = $(this).data('id');
+
+        // Отправляем запрос на сервер для генерации PDF
+        window.open(`/api/pdf/appointments/${appointmentId}`, '_blank');
     });
 
     // Обработчик для закрытия модального окна

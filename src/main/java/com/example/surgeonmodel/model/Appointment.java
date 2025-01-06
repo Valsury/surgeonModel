@@ -8,21 +8,19 @@ import java.time.LocalDateTime;
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Код приема
+    private Long id;
 
     private LocalDateTime appointmentDateTime; // Дата и время приема
-
     private String appointmentType; // Тип приема
-
-    private String operationType; // Тип операции (новое поле)
-
-    @ManyToOne
-    @JoinColumn(name = "surgeon_id", nullable = false) // Код врача
-    private Surgeon surgeon;
+    private String operationType; // Тип операции
 
     @ManyToOne
-    @JoinColumn(name = "patient_id", nullable = false) // Код пациента
-    private Patient patient;
+    @JoinColumn(name = "surgeon_id", nullable = false)
+    private Surgeon surgeon; // Хирург
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient; // Пациент
 
     // Геттеры и сеттеры
     public Long getId() {
