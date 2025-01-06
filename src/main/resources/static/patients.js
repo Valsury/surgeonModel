@@ -10,7 +10,7 @@ $(document).ready(function() {
                 tableBody.empty(); // Очистить таблицу перед добавлением данных
                 data.forEach(patient => {
                     tableBody.append(`
-                        <tr>
+                        <tr data-id="${patient.id}">
                             <td>${patient.firstName}</td>
                             <td>${patient.lastName}</td>
                             <td>${patient.middleName}</td>
@@ -87,7 +87,7 @@ $(document).ready(function() {
     });
 
     // Обработчик для закрытия модального окна редактирования
-    $('#closeModal').click(function() {
+    $('#closeEditModal').click(function() {
         $('#editPatientModal').hide();
     });
 
@@ -117,7 +117,7 @@ $(document).ready(function() {
             dateOfBirth: $('#newDateOfBirth').val(),
             contactDetails: $('#newContactDetails').val(),
             passportSeries: $('#newPassportSeries').val(),
-            passportNumber : $('#newPassportNumber').val()
+            passportNumber: $('#newPassportNumber').val()
         };
 
         $.ajax({
@@ -133,5 +133,10 @@ $(document).ready(function() {
                 alert('Ошибка при добавлении пациента.');
             }
         });
+    });
+
+    // Обработчик для закрытия модального окна добавления пациента
+    $('#closeNewModal').click(function() {
+        $('#addPatientModal').hide();
     });
 });

@@ -28,4 +28,10 @@ public class PatientService {
     public void delete(Long id) {
         patientRepository.deleteById(id);
     }
+
+    public boolean existsById(Long id) {
+
+        return patientRepository.existsById(id);
+
+    }
 }

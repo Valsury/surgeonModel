@@ -2,6 +2,8 @@ package com.example.surgeonmodel.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "patients")
@@ -19,6 +21,10 @@ public class Patient {
     // Новые поля
     private String passportSeries;
     private String passportNumber;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Appointment> appointments = new HashSet<>();
+
 
     // Геттеры и сеттеры
     public Long getId() {

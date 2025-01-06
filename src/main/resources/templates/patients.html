@@ -34,9 +34,15 @@
     </style>
 </head>
 <body>
+<nav>
+    <ul class="navbar">
+        <li><a href="/patients">Пациенты</a></li>
+        <li><a href="/surgeons">Хирурги</a></li>
+        <li><a href="/appointments">Приемы</a></li>
+    </ul>
+</nav>
 <div class="container">
     <h1>Список пациентов</h1>
-    <button onclick="window.location.href='/surgeons'">Перейти к хирургам</button> <!-- Кнопка для перехода к хирургам -->
     <button id="addPatient">Добавить пациента</button> <!-- Кнопка для добавления пациента -->
     <table id="patientsTable">
         <thead>
@@ -60,6 +66,7 @@
 <!-- Модальное окно для добавления пациента -->
 <div id="addPatientModal">
     <div class="modal-content">
+        <span class="close" id="closeNewModal" style="margin-left: 2px;">&times;</span>
         <h2>Добавить пациента</h2>
         <label for="newFirstName">Имя:</label>
         <input type="text" id="newFirstName" required>
@@ -75,14 +82,14 @@
         <input type="text" id="newPassportSeries" required>
         <label for="newPassportNumber">Номер паспорта:</label>
         <input type="text" id="newPassportNumber" required>
-        <button id="saveNewPatient">Сохранить изменения</button>
-        <button id="closeAddModal">Закрыть</button>
+        <button id="saveNewPatient" style="display: block; margin: 20px auto;">Сохранить</button>
     </div>
 </div>
 
 <!-- Модальное окно для редактирования пациента -->
 <div id="editPatientModal">
     <div class="modal-content">
+        <span class="close" id="closeEditModal" style="margin-left: 2px;">&times;</span>
         <h2>Редактировать пациента</h2>
         <input type="hidden" id="editPatientId">
         <label for="editFirstName">Имя:</label>
@@ -99,8 +106,7 @@
         <input type="text" id="editPassportSeries" required>
         <label for="editPassportNumber">Номер паспорта:</label>
         <input type="text" id="editPassportNumber" required>
-        <button id="saveChanges">Сохранить изменения</button>
-        <button id="closeModal">Закрыть</button>
+        <button id="saveChanges" style="display: block; margin: 20px auto;">Сохранить изменения</button>
     </div>
 </div>
 
@@ -108,7 +114,7 @@
     $(document).ready(function() {
         // Открытие модального окна для добавления пациента
         $('#addPatient').click(function() {
-            $('#addPatientModal').show();
+            $('#addPatientModal ').show();
         });
 
         // Закрытие модального окна для добавления пациента

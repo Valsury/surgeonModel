@@ -2,6 +2,8 @@ package com.example.surgeonmodel.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "surgeons")
@@ -17,8 +19,10 @@ public class Surgeon {
     private int yearsOfExperience;
     private String education;
     private String contactDetails;
-    private String username;
-    private String password;
+    private String specialization;
+
+    @OneToMany(mappedBy = "surgeon", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Appointment> appointments = new HashSet<>();
 
     // Геттеры и сеттеры
     public Long getId() {
@@ -85,19 +89,12 @@ public class Surgeon {
         this.contactDetails = contactDetails;
     }
 
-    public String getUsername() {
-        return username;
+    // Геттеры и сеттеры для специализации
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
 }
