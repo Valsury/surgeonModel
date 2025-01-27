@@ -7,7 +7,7 @@ $(document).ready(function() {
             method: 'GET',
             success: function(data) {
                 const tableBody = $('#surgeonsTable tbody');
-                tableBody.empty(); // Очистить таблицу перед добавлением данных
+                tableBody.empty();
                 data.forEach(surgeon => {
                     tableBody.append(`
                         <tr data-id="${surgeon.id}">
@@ -33,14 +33,12 @@ $(document).ready(function() {
         });
     }
 
-    // Обработчик для редактирования хирурга
     $(document).on('click', '.edit-btn', function() {
         const surgeonId = $(this).closest('tr').data('id');
         $.ajax({
             url: `/api/surgeons/${surgeonId}`,
             method: 'GET',
             success: function(surgeon) {
-                // Заполнение формы данными хирурга
                 $('#editSurgeonId').val(surgeon.id);
                 $('#editSurgeonFirstName').val(surgeon.firstName);
                 $('#editSurgeonLastName').val(surgeon.lastName);
@@ -50,8 +48,6 @@ $(document).ready(function() {
                 $('#editSurgeonEducation').val(surgeon.education);
                 $('#editSurgeonContactDetails').val(surgeon.contactDetails);
                 $('#editSurgeonSpecialization').val(surgeon.specialization);
-
-                // Показать модальное окно
                 $('#editSurgeonModal').show();
             },
             error: function() {
@@ -60,7 +56,6 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для сохранения изменений
     $('#saveEditSurgeon').click(function() {
         const surgeonId = $('#editSurgeonId').val();
         const updatedSurgeon = {
@@ -80,8 +75,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(updatedSurgeon),
             success: function() {
-                loadSurgeons(); // Перезагрузить список хирургов
-                $('#editSurgeonModal').hide(); // Закрыть модальное окно
+                loadSurgeons();
+                $('#editSurgeonModal').hide();
             },
             error: function() {
                 alert('Ошибка при обновлении хирурга.');
@@ -89,12 +84,10 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для закрытия модального окна редактирования
     $('#closeEditModal').click(function() {
         $('#editSurgeonModal').hide();
     });
 
-    // Обработчик для удаления хирурга
     $(document).on('click', '.delete-btn', function() {
         const surgeonId = $(this).closest('tr').data('id');
         if (confirm('Вы уверены, что хотите удалить этого хирурга?')) {
@@ -102,7 +95,7 @@ $(document).ready(function() {
                 url: `/api/surgeons/${ surgeonId}`,
                 method: 'DELETE',
                 success: function() {
-                    loadSurgeons(); // Перезагрузить список хирургов
+                    loadSurgeons();
                 },
                 error: function() {
                     alert('Ошибка при удалении хирурга.');
@@ -111,7 +104,6 @@ $(document).ready(function() {
         }
     });
 
-    // Обработчик для добавления нового хирурга
     $('#saveNewSurgeon').click(function() {
         const newSurgeon = {
             firstName: $('#newSurgeonFirstName').val(),
@@ -130,8 +122,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(newSurgeon),
             success: function() {
-                loadSurgeons(); // Перезагрузить список хирургов
-                $('#addSurgeonModal').hide(); // Закрыть модальное окно
+                loadSurgeons();
+                $('#addSurgeonModal').hide();
             },
             error: function() {
                 alert('Ошибка при добавлении хирурга.');
@@ -139,7 +131,6 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для закрытия модального окна добавления хирурга
     $('#closeNewModal').click(function() {
         $('#addSurgeonModal').hide();
     });

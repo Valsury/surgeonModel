@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AppointmentViewController {
 
-    @GetMapping("/appointments") // URL для отображения HTML-страницы приемов
+    @GetMapping("/appointments")
     public String getAppointmentsPage() {
-        return "appointments"; // Имя вашего HTML-файла appointments.html
+        return "appointments";
     }
 }

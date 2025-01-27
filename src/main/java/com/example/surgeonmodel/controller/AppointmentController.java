@@ -29,17 +29,17 @@ public class AppointmentController {
 
     @PostMapping
     public ResponseEntity<String> createAppointment(@RequestBody Appointment appointment) {
-        // Проверка существования пациента
+
         if (appointment.getPatient() == null || !patientService.existsById(appointment.getPatient().getId())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Пациент не существует.");
         }
 
-        // Проверка существования хирурга
+
         if (appointment.getSurgeon() == null || !surgeonService.existsById(appointment.getSurgeon().getId())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Хирург не существует.");
         }
 
-        // Сохранение нового приема
+
         Appointment savedAppointment = appointmentService.save(appointment);
         return ResponseEntity.status(HttpStatus.CREATED).body("Прием успешно создан с ID: " + savedAppointment.getId());
     }

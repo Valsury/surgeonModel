@@ -10,19 +10,18 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime appointmentDateTime; // Дата и время приема
-    private String appointmentType; // Тип приема
-    private String operationType; // Тип операции
+    private LocalDateTime appointmentDateTime;
+    private String appointmentType;
+    private String operationType;
 
     @ManyToOne
     @JoinColumn(name = "surgeon_id", nullable = false)
-    private Surgeon surgeon; // Хирург
+    private Surgeon surgeon;
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
-    private Patient patient; // Пациент
+    private Patient patient;
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }

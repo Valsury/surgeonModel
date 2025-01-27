@@ -1,273 +1,248 @@
-/* Основные стили для body */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f7f9; /* Светлый фон */
+    background-color: #f4f7f9;
     margin: 0;
     padding: 20px;
 }
 
-/* Стили для навигационного меню */
 nav {
-    background-color: #007bff; /* Синий фон для навигационного меню */
-    padding: 10px 0; /* Отступы сверху и снизу */
-    margin-bottom: 20px; /* Отступ снизу для разделения с контентом */
-}
-
-.navbar {
-    list-style-type: none; /* Убираем маркеры списка */
-    padding: 0; /* Убираем отступы */
-    margin: 0; /* Убираем отступы */
-    display: flex; /* Используем flexbox для горизонтального расположения */
-    justify-content: center; /* Центрируем элементы */
-}
-
-.navbar li {
-    margin: 0 15px; /* Отступы между элементами */
-}
-
-.navbar a {
-    color: white; /* Белый текст */
-    text-decoration: none; /* Убираем подчеркивание */
-    padding: 10px 15px; /* Внутренние отступы */
-    border-radius: 5px; /* Закругленные углы */
-    transition: background-color 0.3s; /* Плавный переход */
-}
-
-.navbar a:hover {
-    background-color: #0056b3; /* Темнее при наведении */
-}
-
-/* Контейнер для содержимого */
-.container {
-    max-width: 1200px;
-    margin: auto;
-    background: #ffffff; /* Белый фон для контейнера */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
-}
-
-/* Заголовок */
-h1 {
-    text-align: center;
-    color: #333; /* Темный цвет текста */
+    background-color: #007bff;
+    padding: 10px 0;
     margin-bottom: 20px;
 }
 
-/* Стили для таблицы */
+.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-/* Стили для заголовков таблицы */
 th, td {
     padding: 12px;
-    text-align: center; /* Центрирование текста */
-    border-bottom: 1px solid #ddd; /* Линия под ячейками */
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #007bff; /* Синий фон для заголовков */
-    color: white; /* Белый текст для заголовков */
+    background-color: #007bff;
+    color: white;
 }
 
-/* Стили для строк таблицы */
 tr:hover {
-    background-color: #f1f1f1; /* Светло-серый фон при наведении */
+    background-color: #f1f1f1;
 }
 
-/* Основные стили для кнопок */
 button {
-    background-color: #007bff; /* Синий фон для кнопок */
-    color: white; /* Белый текст для кнопок */
+    background-color: #007bff;
+    color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 20px; /* Отступ сверху для базовых кнопок */
+    margin-top: 20px;
 }
 
-/* Стили для кнопок действий в таблице */
-/* Стили для кнопок действий в таблице */
 .edit-btn, .delete-btn, .print-btn {
-    margin: 0 5px; /* Отступы между кнопками */
-    padding: 8px 12px; /* Уменьшенные отступы для компактности */
-    font-size: 14px; /* Размер шрифта */
-    border-radius: 5px; /* Закругленные углы */
-    transition: background-color 0.3s; /* Плавный переход */
-    background-color: #007bff; /* Синий цвет, как в тематике приложения */
-    color: white; /* Белый текст */
-    border: none; /* Убираем границу */
-    cursor: pointer; /* Указатель при наведении */
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
-/* Эффекты при наведении */
 .edit-btn:hover, .delete-btn:hover, .print-btn:hover {
-    background-color: #0056b3; /* Темно-синий при наведении */
+    background-color: #0056b3;
 }
 
-/* Центрирование кнопок в ячейке таблицы */
 td {
-    text-align: center; /* Центрирование текста и кнопок */
+    text-align: center;
 }
 
-/* Убираем отступы у ячейки с кнопками */
 td:last-child {
-    padding: 0; /* Убираем отступы вокруг кнопок */
+    padding: 0;
 }
 
-/* Основные стили для модального окна */
 .modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Фиксированное положение */
-    z-index: 1000; /* На переднем плане */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
-    overflow: auto; /* Прокрутка, если нужно */
-    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Содержимое модального окна */
 .modal-content {
-    background-color: #ffffff; /* Белый фон */
-    margin: 15% auto; /* Центрирование */
-    padding: 20px; /* Внутренние отступы */
-    border: 1px solid #ccc; /* Светло-серая граница */
-    border-radius: 8px; /* Закругленные углы */
-    width: 80%; /* Ширина модального окна */
-    max-width: 600px; /* Максимальная ширина */
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
 }
 
-/* Заголовок модального окна */
 .modal-content h2 {
-    text-align: center; /* Центрирование заголовка */
-    color: #333; /* Темный цвет текста */
+    text-align: center;
+    color: #333;
 }
 
-/* Стили для полей ввода и их названий */
 label {
-    display: block; /* Блочный элемент для центрирования */
-    text-align: center; /* Центрирование текста */
-    margin: 20px 0 5px; /* Увеличенный отступ сверху и отступ снизу */
+    display: block;
+    text-align: center;
+    margin: 20px 0 5px;
 }
 
 input[type="text"],
 input[type="date"],
 input[type="datetime-local"],
 select {
-    width: 90%; /* Уменьшенная ширина полей ввода */
-    padding: 10px; /* Внутренние отступы */
-    margin: 0 auto 10px; /* Центрирование и отступы снизу */
-    border: 1px solid #ccc; /* Светло-серая граница */
-    border-radius: 4px; /* Закругленные углы */
-    display: block; /* Блочный элемент для центрирования */
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
 }
 
-/* Стили для селектора ID в модальном окне */
 #surgeonId, #patientId {
-    width: 90%; /* Уменьшенная ширина полей ввода */
-    padding: 10px; /* Внутренние отступы */
-    margin: 0 auto 10px; /* Центрирование и отступы снизу */
-    border: 1px solid #ccc; /* Светло-серая граница */
-    border-radius: 4px; /* Закругленные углы */
-    display: block; /* Блочный элемент для центрирования */
-    text-align: center; /* Центрирование текста внутри поля */
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    text-align: center;
 }
 
 #surgeonId:focus, #patientId:focus {
-    border-color: #007bff; /* Цвет границы при фокусе */
-    outline: none; /* Убираем стандартный контур */
+    border-color: #007bff;
+    outline: none;
 }
 
-/* Стили для селекторов стажа работы в модальных окнах */
 #newSurgeonYearsOfExperience, #editSurgeonYearsOfExperience {
-    width: 90%; /* Уменьшенная ширина полей ввода */
-    padding: 10px; /* Внутренние отступы */
-    margin: 0 auto 10px; /* Центрирование и отступы снизу */
-    border: 1px solid #ccc; /* Светло-серая граница */
-    border-radius: 4px; /* Закругленные углы */
-    display: block; /* Блочный элемент для центрирования */
-    text-align: center; /* Центрирование текста внутри поля */
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    text-align: center;
 }
 
 #newSurgeonYearsOfExperience:focus, #editSurgeonYearsOfExperience:focus {
-    border-color: #007bff; /* Цвет границы при фокусе */
-    outline: none; /* Убираем стандартный контур */
+    border-color: #007bff;
+    outline: none;
 }
 
-/* Стили для кнопок в модальном окне */
 #saveChanges, #closeModal, #closeEditModal, #closeNewModal, #saveNewAppointment {
-    width: 100%; /* Полная ширина */
-    padding: 10px; /* Внутренние отступы */
-    margin-top: 10px; /* Отступ сверху */
-    background-color: #007bff; /* Синий фон */
-    color: white; /* Белый текст */
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 5px; /* Закругленные углы */
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 #saveChanges:hover, #closeModal:hover, #saveNewAppointment:hover {
-    background-color: #0056b3; /* Темнее при наведении */
+    background-color: #0056b3;
 }
 
-/* Стили для контейнера приемов */
 .appointments-container {
     display: flex;
-    flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
-    gap: 20px; /* Отступ между карточками */
-    margin-top: 20px; /* Отступ сверху */
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
 }
 
-/* Стили для карточки приема */
 .appointment-card {
-    background-color: #ffffff; /* Белый фон для карточки */
-    border: 1px solid #ddd; /* Светло-серая граница */
-    border-radius: 8px; /* Закругленные углы */
-    padding: 20px; /* Внутренние отступы */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для карточки */
-    width: calc(33.333% - 20px); /* Ширина карточки (3 карточки в ряд) */
-    box-sizing: border-box; /* Учитывать отступы и границы в ширине */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
 }
 
-/* Стили для заголовка карточки */
 .appointment-card h3 {
-    margin: 0 0 10px; /* Отступы для заголовка */
-    font-size: 1.2em; /* Размер шрифта заголовка */
+    margin: 0 0 10px;
+    font-size: 1.2em;
 }
 
-/* Стили для текста в карточке */
 .appointment-card p {
-    margin: 5px 0; /* Отступы для текста */
-    font-size: 1em; /* Размер шрифта текста */
+    margin: 5px 0;
+    font-size: 1em;
 }
 
-/* Стили для кнопок действий */
 .appointment-actions {
-    margin-top: 15px; /* Отступ сверху для кнопок */
+    margin-top: 15px;
 }
 
 .action-btn {
-    background-color: #007bff; /* Цвет фона кноп ки */
-    color: white; /* Цвет текста кнопки */
-    border: none; /* Без границы */
-    border-radius: 5px; /* Закругленные углы */
-    padding: 10px 15px; /* Внутренние отступы */
-    cursor: pointer; /* Указатель при наведении */
-    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .action-btn:hover {
-    background-color: #0056b3; /* Цвет фона при наведении */
+    background-color: #0056b3;
 }
 
 .appointment-code {
-    text-align: center; /* Центрирование текста */
-    margin-top: 0; /* Убираем отступ сверху */
+    text-align: center;
+    margin-top: 0;
 }

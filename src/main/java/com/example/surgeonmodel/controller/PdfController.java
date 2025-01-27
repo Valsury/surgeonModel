@@ -22,23 +22,15 @@ public class PdfController {
     @Autowired
     private PdfService pdfService;
 
-    /**
-     * Генерирует PDF для записи о приеме по ID.
-     *
-     * @param id ID записи о приеме.
-     * @return ResponseEntity с PDF-файлом.
-     */
+
     @GetMapping("/appointments/{id}")
     public ResponseEntity<byte[]> generatePdf(@PathVariable Long id) {
-        // Получаем данные о приеме
         Appointment appointment = appointmentService.findById(id)
                 .orElseThrow(() -> new RuntimeException("Прием не найден"));
-
         try {
-            // Генерируем PDF
+
             byte[] pdfBytes = pdfService.generatePdf(appointment);
 
-            // Возвращаем PDF в ответе
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_PDF);
             headers.setContentDispositionFormData("filename", "appointment_" + id + ".pdf");
@@ -48,7 +40,6 @@ public class PdfController {
                     .headers(headers)
                     .body(pdfBytes);
         } catch (Exception e) {
-            // Логируем ошибку
             e.printStackTrace();
             throw new RuntimeException("Ошибка при генерации PDF: " + e.getMessage(), e);
         }
