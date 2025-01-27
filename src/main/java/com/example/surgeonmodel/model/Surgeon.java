@@ -24,7 +24,7 @@ public class Surgeon {
     @OneToMany(mappedBy = "surgeon", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
 
-    // Геттеры и сеттеры
+
     public Long getId() {
         return id;
     }
@@ -89,7 +89,6 @@ public class Surgeon {
         this.contactDetails = contactDetails;
     }
 
-    // Геттеры и сеттеры для специализации
     public String getSpecialization() {
         return specialization;
     }

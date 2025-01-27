@@ -33,7 +33,6 @@ $(document).ready(function() {
         });
     }
 
-    // Обработчик для добавления нового приема
     $('#addAppointmentBtn').click(function() {
         $('#modalTitle').text('Добавить прием');
         $('#appointmentId').val('');
@@ -42,10 +41,9 @@ $(document).ready(function() {
         $('#operationType').val('');
         $('#surgeonId').val('');
         $('#patientId').val('');
-        $('#appointmentModal').show(); // Показать модальное окно
+        $('#appointmentModal').show();
     });
 
-    // Обработчик для сохранения приема
     $('#saveAppointment').click(function() {
         const appointmentId = $('#appointmentId').val();
         const newAppointment = {
@@ -65,8 +63,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(newAppointment),
             success: function() {
-                loadAppointments(); // Перезагрузить список приемов
-                $('#appointmentModal').hide(); // Закрыть модальное окно
+                loadAppointments();
+                $('#appointmentModal').hide();
             },
             error: function() {
                 alert('Ошибка при сохранении приема.');
@@ -74,7 +72,6 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для редактирования приема
     $(document).on('click', '.edit-btn', function() {
         const appointmentId = $(this).data('id');
         $.ajax({
@@ -88,7 +85,7 @@ $(document).ready(function() {
                 $('#operationType').val(appointment.operationType);
                 $('#surgeonId').val(appointment.surgeon.id);
                 $('#patientId').val(appointment.patient.id);
-                $('#appointmentModal').show(); // Показать модальное окно
+                $('#appointmentModal').show();
             },
             error: function() {
                 alert('Ошибка при загрузке данных приема.');
@@ -96,7 +93,6 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для удаления приема
     $(document).on('click', '.delete-btn', function() {
         const appointmentId = $(this).data('id');
         if (confirm('Вы уверены, что хотите удалить этот прием?')) {
@@ -104,7 +100,7 @@ $(document).ready(function() {
                 url: `/api/appointments/${appointmentId}`,
                 method: 'DELETE',
                 success: function() {
-                    loadAppointments(); // Перезагрузить список приемов
+                    loadAppointments();
                 },
                 error: function() {
                     alert('Ошибка при удалении приема.');
@@ -113,23 +109,19 @@ $(document).ready(function() {
         }
     });
 
-    // Обработчик для печати приема (генерация PDF)
     $(document).on('click', '.print-btn', function() {
         const appointmentId = $(this).data('id');
 
-        // Отправляем запрос на сервер для генерации PDF
         window.open(`/api/pdf/appointments/${appointmentId}`, '_blank');
     });
 
-    // Обработчик для закрытия модального окна
     $('#closeModal').click(function() {
-        $('#appointmentModal').hide(); // Скрыть модальное окно
+        $('#appointmentModal').hide();
     });
 
-    // Закрытие модального окна при клике вне его
     $(window).click(function(event) {
         if (event.target.id === 'appointmentModal') {
-            $('#appointmentModal').hide(); // Скрыть модальное окно
+            $('#appointmentModal').hide();
         }
     });
 });

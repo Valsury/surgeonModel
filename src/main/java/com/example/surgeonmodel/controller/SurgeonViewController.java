@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/surgeons") // URL для отображения HTML-страницы
+@RequestMapping("/surgeons")
 public class SurgeonViewController {
     @GetMapping
     public String getSurgeonsPage() {

@@ -7,7 +7,7 @@ $(document).ready(function() {
             method: 'GET',
             success: function(data) {
                 const tableBody = $('#patientsTable tbody');
-                tableBody.empty(); // Очистить таблицу перед добавлением данных
+                tableBody.empty();
                 data.forEach(patient => {
                     tableBody.append(`
                         <tr data-id="${patient.id}">
@@ -32,14 +32,12 @@ $(document).ready(function() {
         });
     }
 
-    // Обработчик для редактирования пациента
     $(document).on('click', '.edit-btn', function() {
         const patientId = $(this).data('id');
         $.ajax({
             url: `/api/patients/${patientId}`,
             method: 'GET',
             success: function(patient) {
-                // Заполнение формы данными пациента
                 $('#editPatientId').val(patient.id);
                 $('#editFirstName').val(patient.firstName);
                 $('#editLastName').val(patient.lastName);
@@ -48,8 +46,6 @@ $(document).ready(function() {
                 $('#editContactDetails').val(patient.contactDetails);
                 $('#editPassportSeries').val(patient.passportSeries);
                 $('#editPassportNumber').val(patient.passportNumber);
-
-                // Показать модальное окно
                 $('#editPatientModal').show();
             },
             error: function() {
@@ -58,7 +54,6 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для сохранения изменений
     $('#saveChanges').click(function() {
         const patientId = $('#editPatientId').val();
         const updatedPatient = {
@@ -77,8 +72,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(updatedPatient),
             success: function() {
-                loadPatients(); // Перезагрузить список пациентов
-                $('#editPatientModal').hide(); // Закрыть модальное окно
+                loadPatients();
+                $('#editPatientModal').hide();
             },
             error: function() {
                 alert('Ошибка при обновлении пациента.');
@@ -86,12 +81,10 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для закрытия модального окна редактирования
     $('#closeEditModal').click(function() {
         $('#editPatientModal').hide();
     });
 
-    // Обработчик для удаления пациента
     $(document).on('click', '.delete-btn', function() {
         const patientId = $(this).data('id');
         if (confirm('Вы уверены, что хотите удалить этого пациента?')) {
@@ -99,7 +92,7 @@ $(document).ready(function() {
                 url: `/api/patients/${patientId}`,
                 method: 'DELETE',
                 success: function() {
-                    loadPatients(); // Перезагрузить список пациентов
+                    loadPatients();
                 },
                 error: function() {
                     alert('Ошибка при удалении пациента.');
@@ -108,7 +101,6 @@ $(document).ready(function() {
         }
     });
 
-    // Обработчик для добавления нового пациента
     $('#saveNewPatient').click(function() {
         const newPatient = {
             firstName: $('#newFirstName').val(),
@@ -126,8 +118,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(newPatient),
             success: function() {
-                loadPatients(); // Перезагрузить список пациентов
-                $('#addPatientModal').hide(); // Закрыть модальное окно
+                loadPatients();
+                $('#addPatientModal').hide();
             },
             error: function() {
                 alert('Ошибка при добавлении пациента.');
@@ -135,7 +127,6 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для закрытия модального окна добавления пациента
     $('#closeNewModal').click(function() {
         $('#addPatientModal').hide();
     });

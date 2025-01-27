@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Список хирургов</title>
-  <link rel="stylesheet" href="/css/styles.css"> <!-- Подключение стилей -->
+  <link rel="stylesheet" href="/css/styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/surgeons.js"></script> <!-- Подключение JavaScript-файла -->
+  <script src="/surgeons.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     /* Стили для модальных окон */
@@ -43,7 +43,7 @@
 </nav>
 <div class="container">
   <h1>Список хирургов</h1>
-  <button id="addSurgeon">Добавить хирурга</button> <!-- Кнопка для добавления хирурга -->
+  <button id="addSurgeon">Добавить хирурга</button>
   <table id="surgeonsTable">
     <thead>
     <tr>
@@ -54,17 +54,15 @@
       <th>Стаж работы</th>
       <th>Образование</th>
       <th>Контактные данные</th>
-      <th>Специализация</th> <!-- Добавлено поле специализации -->
+      <th>Специализация</th>
       <th>Действия</th>
     </tr>
     </thead>
     <tbody>
-    <!-- Данные хирургов будут динамически добавлены здесь -->
     </tbody>
   </table>
 </div>
 
-<!-- Модальное окно для добавления хирурга -->
 <div id="addSurgeonModal">
   <div class="modal-content">
     <h2>Добавить хирурга</h2>
@@ -89,7 +87,6 @@
   </div>
 </div>
 
-<!-- Модальное окно для редактирования хирурга -->
 <div id="editSurgeonModal">
   <div class="modal-content">
     <span class="close" id="closeEditModal" style="margin-left: 2px;">&times;</span>

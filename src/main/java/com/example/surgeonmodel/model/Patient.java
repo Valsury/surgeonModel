@@ -18,7 +18,7 @@ public class Patient {
     private LocalDate dateOfBirth;
     private String contactDetails;
 
-    // Новые поля
+
     private String passportSeries;
     private String passportNumber;
 
@@ -26,7 +26,7 @@ public class Patient {
     private Set<Appointment> appointments = new HashSet<>();
 
 
-    // Геттеры и сеттеры
+
     public Long getId() {
         return id;
     }
@@ -75,7 +75,7 @@ public class Patient {
         this.contactDetails = contactDetails;
     }
 
-    // Геттеры и сеттеры для новых полей
+
     public String getPassportSeries() {
         return passportSeries;
     }

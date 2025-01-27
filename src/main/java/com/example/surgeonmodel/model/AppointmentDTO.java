@@ -10,7 +10,6 @@ public class AppointmentDTO {
     private String surgeonName;
     private String patientName;
 
-    // Геттеры и сеттеры
 
     public Long getId() {
         return id;

@@ -11,10 +11,8 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 public class SurgeonModelApplication {
 
     public static void main(String[] args) {
-        // Запуск Spring Boot приложения
         SpringApplication.run(SurgeonModelApplication.class, args);
 
-        // Запуск Telegram-бота
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(new SurgeonBot());

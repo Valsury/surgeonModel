@@ -22,14 +22,14 @@ import java.util.List;
 
 public class SurgeonBot extends TelegramLongPollingBot {
 
-    private static final String BOT_TOKEN = "7958734772:AAGYLgmH9Z1Rb2hwl9xRzcqw1xLpxghQ-Z4"; // Замените на ваш токен
+    private static final String BOT_TOKEN = "-";
     private static final String BOT_USERNAME = "BossOfAllSurgeons";
     private static final String API_URL = "http://localhost:8080/api";
 
     private final OkHttpClient httpClient = new OkHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper()
-            .registerModule(new JavaTimeModule()) // Добавляем поддержку Java 8 Date/Time API
-            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false); // Отключаем запись дат как таймстампов
+            .registerModule(new JavaTimeModule())
+            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd, HH:mm");
 
     @Override
@@ -100,18 +100,18 @@ public class SurgeonBot extends TelegramLongPollingBot {
             StringBuilder message = new StringBuilder("Приемы:\n");
             for (AppointmentDTO appointment : appointments) {
                 String formattedDateTime = appointment.getAppointmentDateTime() != null
-                        ? appointment.getAppointmentDateTime().format(DATE_TIME_FORMATTER) // Форматируем дату и время
+                        ? appointment.getAppointmentDateTime().format(DATE_TIME_FORMATTER)
                         : "Не указано";
 
                 message.append("Дата и время: ")
-                        .append(formattedDateTime) // Используем отформатированную дату
+                        .append(formattedDateTime)
                         .append("\nТип приема: ")
                         .append(appointment.getAppointmentType())
                         .append("\nХирург: ")
                         .append(appointment.getSurgeonName())
                         .append("\nПациент: ")
                         .append(appointment.getPatientName())
-                        .append("\n\n"); // Разделитель между приемами
+                        .append("\n\n");
             }
             sendMessage(chatId, message.toString());
         } catch (IOException e) {
